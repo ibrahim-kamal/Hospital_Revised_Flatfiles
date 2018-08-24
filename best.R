@@ -28,7 +28,7 @@ best <- function(st,out){
   }
   ## Return hospital name in that state with lowest 30-day death
   sub <- subset(outcome,outcome$State==st & outcome[nameoutcome]!= "Not Available",select = nameoutcome)
-  lowest <- min(sub[[nameoutcome]])
+  lowest <- min(as.numeric(sub[[nameoutcome]]))
   hosname <- subset(outcome,outcome$State==st & outcome[nameoutcome] == lowest , select = "Hospital.Name")
   ## rate
   return_data<- sort(hosname$Hospital.Name)
